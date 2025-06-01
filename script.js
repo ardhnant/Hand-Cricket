@@ -1,83 +1,84 @@
+// script.js - Cleaned and functional version
 
 let tossChoiceValue = '';
-let tossResult = ''; // <-- use let here, not const
+let tossResult = '';
+let playerTotalRun = 0;
+let playerMove = null;
+let computerMove = null;
 
-function tossChoice(tossValue){
-    tossChoiceValue = tossValue;
-    document.querySelector('#toss-choice').innerText = `You choose to play ${tossChoiceValue}.`;
-    makeTrashDisappear();
+function tossChoice(tossValue) {
+  tossChoiceValue = tossValue;
+  document.querySelector('#toss-choice').innerText = `You choose to play ${tossChoiceValue}.`;
+  document.querySelector("#even-odd-container").style.display = "none";
+  document.querySelector("#toss-num-btn-container").style.display = "block";
 }
 
-function makeTrashDisappear(){
-    document.querySelector("#even-odd-container").style.display = "none";
+function playToss(playerTossMove) {
+  const computerTossMove = generateRandomRun();
+  const tossSum = playerTossMove + computerTossMove;
+
+  if ((tossSum % 2 === 0 && tossChoiceValue === 'even') || (tossSum % 2 !== 0 && tossChoiceValue === 'odd')) {
+    tossResult = 'You Win the Toss.';
+  } else {
+    tossResult = 'You Lost the Toss.';
+  }
+
+  document.querySelector('#score-toss-choice').innerText =
+    `You chose: ${playerTossMove}, Computer chose: ${computerTossMove}`;
+
+  document.querySelector('#result-toss').innerText = tossResult;
+
+  chooseBatBowl();
 }
 
-function playToss(playerTossMove){
-    const computerTossMove = playComputerMove();
+function generateRandomRun() {
+  return Math.floor(Math.random() * 6) + 1; // returns 1 to 6
+}
 
-    if (tossChoiceValue === 'even') {
-        if ((playerTossMove + computerTossMove) % 2 === 0) {
-            tossResult = 'You Win the Toss.';
-        } else {
-            tossResult = 'You Lost the Toss.';
-        }
+function chooseBatBowl() {
+  document.querySelector("#toss-num-btn-container").style.display = "none";
+
+  if (tossResult === 'You Win the Toss.') {
+    document.querySelector('#batting-bowling').innerHTML = `
+      <button onclick="startGame('batting')">Batting</button>
+      <button onclick="startGame('bowling')">Bowling</button>
+    `;
+  } else {
+    computerChooseBatBowl();
+  }
+}
+
+function startGame(mode) {
+  document.querySelector("#batting-bowling").innerHTML = '';
+  document.querySelector("#bat-ball-num-btn-container").style.display = "block";
+  window.gameMode = mode;
+  playerTotalRun = 0;
+  document.querySelector('#player-total-run').innerText = '';
+  document.querySelector('#out-result').innerText = '';
+}
+
+function computerChooseBatBowl() {
+  const choice = Math.random() < 0.5 ? 'batting' : 'bowling';
+  document.querySelector('#computer-choice-bat-bowl').innerText = `Computer chose to ${choice}`;
+  startGame(choice === 'batting' ? 'bowling' : 'batting');
+}
+
+function playRun(playerInput) {
+  if (typeof window.gameMode === 'undefined') return;
+
+  playerMove = playerInput;
+  computerMove = generateRandomRun();
+
+  if (playerMove === computerMove) {
+    document.querySelector('#out-result').innerText = `You are out.`;
+    document.querySelector('#player-total-run').innerText = `Your total score is ${playerTotalRun}`;
+    document.querySelector('#bat-ball-num-btn-container').style.display = 'none';
+  } else {
+    if (window.gameMode === 'batting') {
+      playerTotalRun += playerMove;
+      document.querySelector('#player-total-run').innerText = `Your score: ${playerTotalRun}`;
     } else {
-        if ((playerTossMove + computerTossMove) % 2 === 0) {
-            tossResult = 'You Lost the Toss.';
-        } else {
-            tossResult = 'You Win the Toss.';
-        }
+      // bowling mode logic can be added later
     }
-
-    document.querySelector('#score-toss-choice').innerText =
-    `You choose to play: ${playerTossMove} Computer choose to play: ${computerTossMove}`;
-
-    document.querySelector('#result-toss').innerText = tossResult;
-
-    chooseBatBowl();
-}
-
-function playComputerMove(){
-    let tossRun = Math.random();
-
-    if (tossRun < 1/6){
-        computerTossMove = 1;
-    } else if (tossRun < 2/6){
-        computerTossMove = 2;
-    } else if (tossRun < 3/6){
-        computerTossMove = 3;
-    } else if (tossRun < 4/6){
-        computerTossMove = 4;
-    } else if (tossRun < 5/6){
-        computerTossMove = 5;
-    } else {
-        computerTossMove = 6;
-    }
-
-
-    return computerTossMove;
-}
-
-function chooseBatBowl(){
-    if(tossResult === 'You Win the Toss.'){
-        document.querySelector('#batting-bowling').innerHTML = `
-        <button onclick="playerBatting()">Batting</button>
-        <button onclick="computerBatting()">Bowling</button>`;
-
-        document.querySelector("#toss-num-btn-container").style.display = "none";
-    } else {
-        computerChooseBatBowl();
-        document.querySelector("#toss-num-btn-container").style.display = "none";
-    }
-}
-
-function computerChooseBatBowl(){
-    let randomBatBowl  = Math.random();
-    let computerBatBowlChoice = '';
-    if (randomBatBowl < 1/2){
-        computerBatBowlChoice = 'Bat';
-    } else {
-        computerBatBowlChoice = 'Ball';
-    }
-    document.querySelector('#computer-choice-bat-bowl').innerText = `Computer choose to ${computerBatBowlChoice}`;
+  }
 }
