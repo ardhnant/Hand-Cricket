@@ -1,0 +1,15 @@
+body{
+    background-color: hsl(0, 0%, 15%);
+    color: white;
+}
+
+p{
+    font-size: 28px;
+}
+
+button{
+    font-size: 24px;
+    padding: 7px;
+    margin-left: 10px;
+}
+
