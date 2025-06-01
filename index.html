@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Hand Cricket</title>
+</head>
+<body>
+
+  <div>
+    <h1>
+     This is Hand Cricket
+    </h1>
+    <div id="even-odd-container">
+      <p>What you wanna choose for toss.</p>
+      <button onclick="tossChoice('even')">Even</button>
+      <button onclick="tossChoice('odd')">Odd</button>
+    </div>
+    <p id="toss-choice"></p>
+    <div id="toss-num-btn-container">
+      <p>
+        Choose Your Weapon
+      </p>
+      <button onclick="playToss(1)">1</button>
+      <button onclick="playToss(2)">2</button>
+      <button onclick="playToss(3)">3</button>
+      <button onclick="playToss(4)">4</button>
+      <button onclick="playToss(5)">5</button>
+      <button onclick="playToss(6)">6</button>
+    </div>
+
+    <p id="score-toss-choice"></p>
+    <p id="result-toss"></p>
+
+    <div id="batting-bowling"></div>
+  </div>
+   <p id="computer-choice-bat-bowl"></p>
+
+
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
