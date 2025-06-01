@@ -81,3 +81,15 @@ function computerChooseBatBowl(){
     }
     document.querySelector('#computer-choice-bat-bowl').innerText = `Computer choose to ${computerBatBowlChoice}`;
 }
+
+
+// function computerChooseBatBowl(){
+//     let randomBatBowl  = Math.random();
+//     let computerBatBowlChoice = '';
+//     if (randomBatBowl < 1/2){
+//         computerBatBowlChoice = 'Bat';
+//     } else {
+//         computerBatBowlChoice = 'Ball';
+//     }
+//     document.querySelector('#computer-choice-bat-bowl').innerText = `Computer choose to ${computerBatBowlChoice}`;
+// }
