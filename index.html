@@ -1,58 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hand Cricket</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div>
-    <h1>This is Hand Cricket</h1>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hand Cricket</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div>
+            <h1>This is Hand Cricket</h1>
 
-    <!-- Toss Selection -->
-    <div id="even-odd-container">
-      <p>Choose for toss:</p>
-      <button onclick="tossChoice('even')">Even</button>
-      <button onclick="tossChoice('odd')">Odd</button>
-    </div>
+            <!-- Toss Selection -->
+            <div id="even-odd-container">
+                <p>Choose for toss:</p>
+                <button onclick="tossChoice('even')">Even</button>
+                <button onclick="tossChoice('odd')">Odd</button>
+            </div>
 
-    <p id="toss-choice"></p>
+            <p id="toss-choice"></p>
 
-    <!-- Toss Number Buttons -->
-    <div id="toss-num-btn-container">
-      <p>Choose your toss number:</p>
-      <button onclick="playToss(1)">1</button>
-      <button onclick="playToss(2)">2</button>
-      <button onclick="playToss(3)">3</button>
-      <button onclick="playToss(4)">4</button>
-      <button onclick="playToss(5)">5</button>
-      <button onclick="playToss(6)">6</button>
-    </div>
+            <!-- Toss Number Buttons -->
+            <div id="toss-num-btn-container">
+                <p>Choose your toss number:</p>
+                <button onclick="playToss(1)">1</button>
+                <button onclick="playToss(2)">2</button>
+                <button onclick="playToss(3)">3</button>
+                <button onclick="playToss(4)">4</button>
+                <button onclick="playToss(5)">5</button>
+                <button onclick="playToss(6)">6</button>
+            </div>
 
-    <p id="score-toss-choice"></p>
-    <p id="result-toss"></p>
+            <p id="score-toss-choice"></p>
+            <p id="result-toss"></p>
 
-    <!-- Batting or Bowling Decision -->
-    <div id="batting-bowling"></div>
+            <!-- Batting or Bowling Decision -->
+            <div id="batting-bowling"></div>
 
-    <p id="computer-choice-bat-bowl"></p>
+            <p id="computer-choice-bat-bowl"></p>
 
-    <!-- Gameplay Buttons -->
-    <div id="bat-ball-num-btn-container" style="display: none;">
-      <p>Choose your run:</p>
-      <button onclick="playRun(1)">1</button>
-      <button onclick="playRun(2)">2</button>
-      <button onclick="playRun(3)">3</button>
-      <button onclick="playRun(4)">4</button>
-      <button onclick="playRun(5)">5</button>
-      <button onclick="playRun(6)">6</button>
-    </div>
+            <!-- Gameplay Buttons -->
+            <div id="bat-ball-num-btn-container" style="display: none">
+                <p>Choose your run:</p>
+                <button onclick="playRun(1)">1</button>
+                <button onclick="playRun(2)">2</button>
+                <button onclick="playRun(3)">3</button>
+                <button onclick="playRun(4)">4</button>
+                <button onclick="playRun(5)">5</button>
+                <button onclick="playRun(6)">6</button>
+            </div>
 
-    <p id="out-result"></p>
-    <p id="player-total-run"></p>
-  </div>
+            <p id="out-result"></p>
+            <p id="player-total-run"></p>
+        </div>
 
-  <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>
